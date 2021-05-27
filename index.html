@@ -92,18 +92,15 @@ loader.load("https://immersive-web.github.io/webxr-samples/media/gltf/sunflower/
   flower = gltf.scene;
 });
          
-          
+    
+    flower.scale.set(5,5,5)
+
+   
           // set the position of the cylinder based on where the reticle is          
           flower.position.setFromMatrixPosition(reticle.matrix);
           flower.quaternion.setFromRotationMatrix(reticle.matrix);
-         
-          session.addEventListener("select", (event) => {
-  if (flower) {
-    const clone = flower.clone();
-    clone.position.copy(reticle.position);
-    scene.add(clone);
-  }
-});
+          scene.add(flower);
+
           
         }
       }
