@@ -7,6 +7,7 @@
     <meta name="author" content="WebXR Academy">
     <link type="text/css" rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.js" crossorigin="anonymous"></script>
+
   </head>
 
   <body>
@@ -16,7 +17,7 @@
       // On the desktop emulator you have to "right-click" to simulate a tap
       
       import { ARButton } from "https://unpkg.com/three@0.126.0/examples/jsm/webxr/ARButton.js";
-      import {GLTFLoader} from './GLTFLoader.js'
+      import {GLTFLoader} from 'https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js'
 
       let container;
       let camera, scene, renderer;
@@ -85,12 +86,20 @@
       function onSelect() {        
         if (reticle.visible) {
         
-          const loader = new GLTFLoader()
-          loader.load('./both.glb', )
-          const root = glb.scene;
-          root.scale.set(5,5,5)
+          const loader = new THREE.GLTFLoader();
+          let both;
+          loader.load("./both.gltf", function(glb) {
+          both = glb.scene;
+});
 
-           scene.add(root);
+session.addEventListener("select", (event) => {
+  if (flower) {
+    const clone = flower.clone();
+    clone.position.copy(reticle.position);
+    scene.add(clone);
+  }
+});
+        
    
         
           }
