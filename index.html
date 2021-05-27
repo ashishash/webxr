@@ -93,8 +93,8 @@
 });
 
 session.addEventListener("select", (event) => {
-  if (flower) {
-    const clone = flower.clone();
+  if (both) {
+    const clone = both.clone();
     clone.position.copy(reticle.position);
     scene.add(clone);
   }
