@@ -87,17 +87,14 @@
         if (reticle.visible) {
         
           const loader = new THREE.GLTFLoader();
-          let both;
+        
           loader.load("./both.gltf", function(glb) {
-          both = glb.scene;
-});
+          
+          const root = glb.scene;
+    root.scale.set(5,5,5)
 
-session.addEventListener("select", (event) => {
-  if (both) {
-    const clone = both.clone();
-    clone.position.copy(reticle.position);
-    scene.add(clone);
-  }
+    scene.add(root);
+
 });
         
    
