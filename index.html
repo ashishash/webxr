@@ -24,11 +24,8 @@ async function activateXR() {
   document.body.appendChild(canvas);
   const gl = canvas.getContext("webgl", {xrCompatible: true});
 
-  // To be continued in upcoming steps.
-}
-
-
-const scene = new THREE.Scene();
+  
+  const scene = new THREE.Scene();
 
 const directionalLight = new THREE.DirectionalLight(0xffffff, 0.3);
 directionalLight.position.set(10, 15, 10);
@@ -136,6 +133,10 @@ const onXRFrame = (time, frame) => {
   }
 }
 session.requestAnimationFrame(onXRFrame);
+}
+
+
+
 
 
 
