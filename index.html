@@ -91,13 +91,20 @@
 loader.load("https://immersive-web.github.io/webxr-samples/media/gltf/sunflower/sunflower.gltf", function(gltf) {
   flower = gltf.scene;
 });
-          const mesh = new THREE.Mesh(geometry, material);
+         
           
           // set the position of the cylinder based on where the reticle is          
-          mesh.position.setFromMatrixPosition(reticle.matrix);
-          mesh.quaternion.setFromRotationMatrix(reticle.matrix);
-
-          scene.add(mesh); 
+          flower.position.setFromMatrixPosition(reticle.matrix);
+          flower.quaternion.setFromRotationMatrix(reticle.matrix);
+         
+          session.addEventListener("select", (event) => {
+  if (flower) {
+    const clone = flower.clone();
+    clone.position.copy(reticle.position);
+    scene.add(clone);
+  }
+});
+          
         }
       }
 
