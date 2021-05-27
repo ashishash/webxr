@@ -7,6 +7,8 @@
     <meta name="author" content="WebXR Academy">
     <link type="text/css" rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.js" crossorigin="anonymous"></script>
+    
+    
   </head>
 
   <body>
@@ -16,7 +18,7 @@
       // On the desktop emulator you have to "right-click" to simulate a tap
       
       import { ARButton } from "https://unpkg.com/three@0.126.0/examples/jsm/webxr/ARButton.js";
-
+      import {GLTFLoader} from 'https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js'
       let container;
       let camera, scene, renderer;
       let reticle;
@@ -85,10 +87,10 @@
         if (reticle.visible) {
           // cone added at the point of a hit test
           // replace the next lines to add your own object in space
-          const geometry = new THREE.CylinderBufferGeometry(0, 0.05, 0.2, 32);
-          const material = new THREE.MeshPhongMaterial({
-            color: 0xffffff * Math.random()
-          });
+         let flower;
+loader.load("https://immersive-web.github.io/webxr-samples/media/gltf/sunflower/sunflower.gltf", function(gltf) {
+  flower = gltf.scene;
+});
           const mesh = new THREE.Mesh(geometry, material);
           
           // set the position of the cylinder based on where the reticle is          
