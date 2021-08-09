@@ -21,6 +21,7 @@ window.addEventListener('DOMContentLoaded', function(){
         camera.attachControl(canvas, true);
         camera.lowerRadiusLimit = 1.5;
         camera.upperRadiusLimit = 5;
+        camera.inputs.removeByType('ArcRotateCameraPointersInput');
         
         let chair;
       //  BABYLON.SceneLoader.ImportMesh(
